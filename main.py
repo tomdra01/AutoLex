@@ -2,12 +2,12 @@ import os
 import autogen
 from src.agents.user_proxy import user_proxy
 from src.agents.legal_researcher import legal_researcher
-from src.tools.scraper import fetch_specific_law, scan_laws_for_keyword
+from src.tools.fetcher import fetch_specific_law
+from src.tools.scanner import scan_laws_for_keyword
 
 TARGET_YEAR = 2020
-TARGET_TOPIC = "volieb"  # Try: "dane" (taxes), "skolstvo" (education)
+TARGET_TOPIC = "volieb"
 TASK_PROMPT = f"Find any laws from {TARGET_YEAR} related to '{TARGET_TOPIC}'."
-
 
 autogen.agentchat.register_function(
     fetch_specific_law,
