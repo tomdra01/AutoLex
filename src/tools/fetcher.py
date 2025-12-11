@@ -60,6 +60,8 @@ def _extract_dates(xml_bytes):
         for meta in root.findall(".//ml:meta", NAMESPACES):
             prop = meta.get("property")
             content = meta.get("content")
+
+            """valid, effective, declared"""
             if prop in ["slovlex-owl:platny", "slovlex-owl:ucinny", "slovlex-owl:vyhlaseny"]:
                 clean_date = content.split("zaciatok=")[-1].split(";")[0].strip() if "zaciatok=" in content else content
                 try:
